@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
 import time
-
+from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions
@@ -55,12 +55,15 @@ def test_add_leave():
     wait.until(expected_conditions.visibility_of_element_located(
         (By.XPATH, "//li[@class='ac_even ac_over']"))).click()
 
-    leave_type = wait.until(expected_conditions.visibility_of_element_located(
-        (By.ID, 'entitlements_leave_type'))).click()
+    leave_type = Select(driver.find_element_by_id('entitlements_leave_type'))
+    leave_type.select_by_index(1)
+
+    # leave_type = Select(wait.until(expected_conditions.visibility_of_element_located(
+    #     (By.ID, 'entitlements_leave_type'))).click()
 
     # leave_type.select_by_visible_text('CAN - FMLA')
-    # leave_type.select_by_value('7')
-    # leave_type.select_by_index(1)
+    # leave_type.select_by_id('7')
+    # leave_type.select_by_index(2)
 
     wait.until(expected_conditions.visibility_of_element_located(
         (By.XPATH, "//input[@id='entitlements_entitlement']"))).send_keys("1")
@@ -71,6 +74,8 @@ def test_add_leave():
     # Accept the leave addition
     wait.until(expected_conditions.visibility_of_element_located(
         (By.ID, 'dialogUpdateEntitlementConfirmBtn'))).click()
+
+    time.sleep(5)
 
 
 test_add_leave()
@@ -87,8 +92,11 @@ def test_assign_leave():
     wait.until(expected_conditions.visibility_of_element_located(
         (By.XPATH, "(//li[contains(@class,'ac_even ac_over')])[2]"))).click()
 
-    assign_leave_type = wait.until(expected_conditions.visibility_of_element_located(
-        (By.ID, 'assignleave_txtLeaveType'))).click()
+    assign_leave_type = Select(driver.find_element_by_id('assignleave_txtLeaveType'))
+    assign_leave_type.select_by_index(2)
+
+    # assign_leave_type = wait.until(expected_conditions.visibility_of_element_located(
+    #     (By.ID, 'assignleave_txtLeaveType'))).click()
 
     # assign_leave_type.select_by_value('7')
     # assign_leave_type.select_by_visible_text('CAN - FMLA')
@@ -111,6 +119,8 @@ def test_assign_leave():
 
     wait.until(expected_conditions.visibility_of_element_located(
         (By.XPATH, "//input[@id='assignBtn']"))).click()
+
+    time.sleep(5)
 
 
 test_assign_leave()
@@ -135,8 +145,11 @@ def test_leave_list():
     wait.until(expected_conditions.visibility_of_element_located(
         (By.ID, 'btnSearch'))).click()
 
-    cancel_leave = wait.until(expected_conditions.visibility_of_element_located(
-        (By.ID, 'select_leave_action_66'))).click()
+    cancel_leave = Select(driver.find_element_by_id('select_leave_action_66'))
+    cancel_leave.select_by_index(2)
+
+    # cancel_leave = wait.until(expected_conditions.visibility_of_element_located(
+    #     (By.ID, 'select_leave_action_66'))).click()
 
     # cancel_leave.select_by_value('92')
     # cancel_leave.select_by_index(2)
