@@ -58,6 +58,8 @@ def test_add_leave():
     leave_type = Select(driver.find_element_by_id('entitlements_leave_type'))
     leave_type.select_by_index(1)
 
+    time.sleep(2)
+
     # leave_type = Select(wait.until(expected_conditions.visibility_of_element_located(
     #     (By.ID, 'entitlements_leave_type'))).click()
 
@@ -75,7 +77,7 @@ def test_add_leave():
     wait.until(expected_conditions.visibility_of_element_located(
         (By.ID, 'dialogUpdateEntitlementConfirmBtn'))).click()
 
-    time.sleep(5)
+    time.sleep(2)
 
 
 test_add_leave()
@@ -94,6 +96,7 @@ def test_assign_leave():
 
     assign_leave_type = Select(driver.find_element_by_id('assignleave_txtLeaveType'))
     assign_leave_type.select_by_index(2)
+    time.sleep(2)
 
     # assign_leave_type = wait.until(expected_conditions.visibility_of_element_located(
     #     (By.ID, 'assignleave_txtLeaveType'))).click()
@@ -120,7 +123,7 @@ def test_assign_leave():
     wait.until(expected_conditions.visibility_of_element_located(
         (By.XPATH, "//input[@id='assignBtn']"))).click()
 
-    time.sleep(5)
+    time.sleep(2)
 
 
 test_assign_leave()
@@ -147,7 +150,7 @@ def test_leave_list():
 
     cancel_leave = Select(driver.find_element_by_id('select_leave_action_66'))
     cancel_leave.select_by_index(2)
-    
+
     time.sleep(5)
 
     # cancel_leave = wait.until(expected_conditions.visibility_of_element_located(
@@ -162,3 +165,5 @@ def test_leave_list():
 
 
 test_leave_list()
+
+# driver.quit()
