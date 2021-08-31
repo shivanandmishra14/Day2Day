@@ -33,7 +33,7 @@ test_day_to_day_health()
 # @pytest.mark.d2d
 def test_add_leave():
     wait.until(expected_conditions.visibility_of_element_located(
-        (By.XPATH, "//span[normalize-space()='Apply Leave']"))).click()
+        (By.ID, 'menu_leave_viewLeaveModule'))).click()
 
     wait.until(expected_conditions.visibility_of_element_located(
         (By.ID, 'menu_leave_Entitlements'))).click()
@@ -147,6 +147,8 @@ def test_leave_list():
 
     cancel_leave = Select(driver.find_element_by_id('select_leave_action_66'))
     cancel_leave.select_by_index(2)
+    
+    time.sleep(5)
 
     # cancel_leave = wait.until(expected_conditions.visibility_of_element_located(
     #     (By.ID, 'select_leave_action_66'))).click()
